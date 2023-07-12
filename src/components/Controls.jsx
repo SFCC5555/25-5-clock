@@ -48,13 +48,16 @@ const Controls = () => {
   }, [playState, update]);
 
   function play() {
-    dispatch(changePlayState(true));
+    dispatch(changePlayState(!playState));
   }
 
   function reload() {
     dispatch(changeTimeState('session'));
     dispatch(changeClockTime({ minutes: time.session, seconds: 0 }));
     dispatch(changePlayState(false));
+    const audio = document.getElementById('beep');
+    audio.currentTime = 0; // Reiniciar la reproducción desde el principio
+    audio.pause();
   }
 
   function pause() {
@@ -63,7 +66,7 @@ const Controls = () => {
 
   return (
     <section className="d-flex align-items-center justify-content-center gap-5 mt-3">
-      <button onClick={!playState ? play : undefined} className={`control-button ${mode}-control-button`}>
+      <button id="start_stop" onClick={play} className={`control-button ${mode}-control-button`}>
         <i className="bi bi-play fs-4 button-icon" />
       </button>
       <button onClick={pause} className={`control-button ${mode}-control-button`}>

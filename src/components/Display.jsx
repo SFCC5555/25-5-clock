@@ -28,8 +28,8 @@ const Display = () => {
   
   return (
     <div className="display" >
-      <h4>{timeState[0].toUpperCase()+timeState.slice(1)}</h4>
-      <div className='fs-1' >{clockTime.minutes<10?`0${clockTime.minutes}`:clockTime.minutes}:{clockTime.seconds<10?`0${clockTime.seconds}`:clockTime.seconds}</div>
+      <h4 id="timer-label" >{timeState[0].toUpperCase()+timeState.slice(1)}</h4>
+      <div id="time-left" className='fs-1' >{clockTime.minutes<10?`0${clockTime.minutes}`:clockTime.minutes}:{clockTime.seconds<10?`0${clockTime.seconds}`:clockTime.seconds}</div>
     </div>
   )
 }

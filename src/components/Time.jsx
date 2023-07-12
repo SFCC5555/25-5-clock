@@ -14,15 +14,11 @@ const Time = ({name}) => {
 
   function reduceTime() {
     const newTime = {...time}
-    if (name==='session'&&time.session===1) {
-      dispatch(changeTime(newTime))
-      dispatch(changeActionState(name));
-    } else {
-      newTime[name]-=1
 
-      dispatch(changeTime(newTime));
-      dispatch(changeActionState(name));
-    }
+    newTime[name]-=1
+
+    dispatch(changeTime(newTime));
+    dispatch(changeActionState(name));
 
 
   }
@@ -39,11 +35,11 @@ const Time = ({name}) => {
 
   return (
     <div className='d-flex flex-column align-items-center' >
-      <h4>{name[0].toUpperCase()+name.slice(1)}</h4>
+      <h4  id={`${name}-label`} >{name[0].toUpperCase()+name.slice(1)}</h4>
       <section  className='d-flex align-items-center justify-content-between' style={{width:'160px'}}  >
-        <button onClick={time[name]>0?reduceTime:undefined} className={`time-button ${mode}-mode ${mode}-time-button`}><i className='bi bi-arrow-down-circle fs-4 button-icon' /></button>
-        <p className='fs-2' >{time[name]}</p>
-        <button onClick={addTime} className={`time-button ${mode}-mode ${mode}-time-button`}><i className='bi bi-arrow-up-circle fs-4 button-icon' /></button>
+        <button id={`${name}-decrement`} onClick={time[name]>1?reduceTime:undefined} className={`time-button ${mode}-mode ${mode}-time-button`}><i className='bi bi-arrow-down-circle fs-4 button-icon' /></button>
+        <p id={`${name}-length`} className='fs-2' >{time[name]}</p>
+        <button id={`${name}-increment`} onClick={time[name]<60?addTime:undefined}className={`time-button ${mode}-mode ${mode}-time-button`}><i className='bi bi-arrow-up-circle fs-4 button-icon' /></button>
       </section>
     </div>
   )

@@ -14,12 +14,15 @@ const Clock = () => {
     dispatch(changeTimeState('session'));
     dispatch(changeTime({session:25,break:5}));
     dispatch(changePlayState(false));
+    const audio = document.getElementById('beep');
+    audio.currentTime = 0; // Reiniciar la reproducción desde el principio
+    audio.pause();
 
   }
 
 
   return (
-    <span onClick={handleClick} className="clock"><div>25 + 5</div></span>
+    <span id="reset" onClick={handleClick} className="clock"><div>25 + 5</div></span>
   )
 }
 
