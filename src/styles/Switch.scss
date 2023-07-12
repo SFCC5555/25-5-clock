@@ -1,0 +1,52 @@
+.switch-container {
+
+    height: 40px;
+    width: 100px;
+    border-radius: 200px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+
+}
+
+.switch {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+}
+
+@each $mode in 'light', 'dark' {
+
+    .#{$mode}-switch-container {
+        box-shadow: var(--#{$mode}-switch-container-shadow);
+    }
+
+    .#{$mode}-switch {
+        background: var(--#{$mode}-switch-background);
+        box-shadow: var(--#{$mode}-switch-shadow);
+    }
+
+}
+
+
+.justify-start {
+    animation-name: startAnimation;
+    animation-duration: 500ms;
+}
+
+.justify-end {
+    animation-name: endAnimation;
+    animation-duration: 500ms;
+}
+
+@keyframes startAnimation {
+    0%{translate: 60px;}
+    100%{translate: 0px;}
+}
+
+@keyframes endAnimation {
+    0%{translate: -60px;}
+    100%{translate: 0px;}
+}
